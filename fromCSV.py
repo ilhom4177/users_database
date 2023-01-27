@@ -13,8 +13,11 @@ def fromCSV(filename:str)->list[dict]:
     data = []
     with open(filename, 'r') as f:
         reader = csv.DictReader(f)
+        # Skip ID column
         for row in reader:
+            row.pop('id')
             data.append(row)
+        
 
     return data
 
@@ -25,11 +28,12 @@ def fromDict(data:list[dict])->None:
     args:
         data: list of dictionaries
     """
-    db = TinyDB('db.json')
-    pass
+    db = TinyDB('db.json',indent=4)
+    db.truncate()
+    db.insert_multiple(data)
 
 
 filename = 'users.csv'
 data = fromCSV(filename)
-pprint(data[:3])
+fromDict(data)
     
