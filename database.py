@@ -6,7 +6,7 @@ users = db.table('users')
 
 def get_users() -> list:
     '''Returns a list of users from the database.'''
-    pass
+    return users.all()
 
 def get_user_by_id(id: int) -> dict:
     '''Returns a user by their ID.'''
@@ -15,3 +15,7 @@ def get_user_by_id(id: int) -> dict:
 def get_user_by_full_name(first_name: str, last_name: str) -> dict:
     '''Returns a user by their full name.'''
     pass
+
+
+list_users = get_users()
+print(list_users[-1])
