@@ -18,4 +18,5 @@ def get_user_by_full_name(first_name: str, last_name: str) -> dict:
 
 
 list_users = get_users()
-print(list_users[-1])
+last = list_users[-1]
+print(last.doc_id)
