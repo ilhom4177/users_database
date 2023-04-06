@@ -1,29 +1,27 @@
 import csv
 from tinydb import TinyDB
+import time
 
 db = TinyDB('db.json', indent=4, separators=(',', ': '))
-users = db.table('users')
+users_table = db.table('users')
 
 def read_csv(filename: str) -> list[dict]:
     '''Reads a CSV file and returns a list of dictionaries.'''
     with open(filename, 'r') as file:
         reader = csv.DictReader(file)
         return list(reader)
+    
+
+def insert_data(data: dict) -> int:
+    '''Inserts data into the database.'''
+    return users_table.insert(data)
 
 
 users = read_csv('users.csv')
 for user in users:
-    print(user['id'])
+    user['id'] = int(user['id'])
+    
+    print(insert_data(user))
 
-
-
-
-
-def insert_data(data: list) -> None:
-    '''Inserts data into the database.'''
-    pass
-
-
-# if __name__ == '__main__':
-#     data = read_csv('users.csv')
-#     insert_data(data)
+    # sleep
+    # time.sleep(1)
