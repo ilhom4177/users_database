@@ -36,3 +36,16 @@ def get_user_by_country(country):
 def get_users_full_name(user):
     '''Returns a user's full name'''
     pass
+
+
+def update_user(user_id, field, value):
+    '''Updates a user's field'''
+    pass
+
+def delete_user(user_id):
+    '''Deletes a user'''
+    pass
+
+def add_user(user):
+    '''Adds a user to the database'''
+    pass
