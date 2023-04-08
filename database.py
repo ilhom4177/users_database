@@ -7,8 +7,18 @@ users_table = db.table('users')
 
 User = Query()
 
-users = users_table.search((User.country=='Greece') & (User.first_name=='Nanice'))
-print((users))
+users = users_table.search((User.first_name.exists()))
+
+print(len(users))
+
+
+
+
+
+
+
+
+
 
 
 def get_user_by_id(user_id):
