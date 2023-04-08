@@ -7,18 +7,9 @@ users_table = db.table('users')
 
 User = Query()
 
-users = users_table.search((User.first_name.exists()))
-
-print(len(users))
-
-
-
-
-
-
-
-
-
+def get_by_field(field: str, value: str):
+    '''Returns a user by field'''
+    return users_table.search(User[field].search(value))
 
 
 def get_user_by_id(user_id):
@@ -29,9 +20,6 @@ def get_user_by_email(email):
     '''Returns a user by email'''
     pass
 
-def get_user_by_username(username):
-    '''Returns a user by username'''
-    pass
 
 def get_user_by_first_name(first_name):
     '''Returns a user by first name'''
@@ -45,6 +33,6 @@ def get_user_by_country(country):
     '''Returns a user by country'''
     pass
 
-def get_user_full_name(user):
+def get_users_full_name(user):
     '''Returns a user's full name'''
     pass
